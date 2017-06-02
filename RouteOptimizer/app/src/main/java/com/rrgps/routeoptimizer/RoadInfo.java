@@ -11,12 +11,12 @@ public class RoadInfo {
     LatLng start;
     LatLng end;
     int weight;
-    RoadInfo(double lat1, double lng1, double lat2, double lng2,int weight)
+    /*RoadInfo(double lat1, double lng1, double lat2, double lng2,int weight)
     {
         start = new LatLng(lat1,lng1);
         end = new LatLng(lat2,lng2);
         this.weight = weight;
-    }
+    }*/
     RoadInfo(LatLng start,LatLng end,int weight)
     {
         this.start = start;

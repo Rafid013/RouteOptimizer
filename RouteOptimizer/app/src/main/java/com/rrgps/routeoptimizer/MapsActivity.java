@@ -3,6 +3,8 @@ package com.rrgps.routeoptimizer;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -11,6 +13,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -244,6 +248,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onConnectionSuspended(int i) {
 
     }
+
+
+    public void Search(View view)
+    {
+        EditText loc = (EditText)findViewById(R.id.Text);
+        String location = loc.getText().toString();
+        List<Address> addressList = null;
+        if(location != null || location !="")
+        {
+            Geocoder geocoder = new Geocoder(this);
+            try {
+                addressList = geocoder.getFromLocationName(location,1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(addressList!=null) {
+            Address add = addressList.get(0);
+            LatLng latLng = new LatLng(add.getLatitude(), add.getLongitude());
+            mMap.clear();
+            mMap.addMarker(new MarkerOptions().position(latLng).title("Marker in Sydney"));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        }
+    }
+
 
     @Override
     public void onLocationChanged(Location location) {

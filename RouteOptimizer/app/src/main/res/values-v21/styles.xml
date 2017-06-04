@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="StartTheme" parent="android:Theme.NoTitleBar.Fullscreen">
+        <item name="colorPrimary">@color/start_background</item>
+        <item name="colorPrimaryDark">@color/start_background</item>
+        <item name="colorAccent">@color/start_background</item>
+        <item name="android:colorBackground">@color/start_background</item>
+        <item name="android:windowBackground">@color/start_background</item>
+        <item name="android:colorPrimary">@color/start_background</item>
+        <item name="android:colorPrimaryDark">@color/start_background</item>
+    </style>
+</resources>

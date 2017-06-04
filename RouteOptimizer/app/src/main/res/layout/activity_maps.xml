@@ -14,14 +14,14 @@ android:weightSum="1">
 
     <EditText
         android:id="@+id/Text"
-        android:layout_width="266dp"
+        android:layout_width="243dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/searchButton"
-        android:layout_width="wrap_content"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:onClick="Search"
         android:text="Search" />

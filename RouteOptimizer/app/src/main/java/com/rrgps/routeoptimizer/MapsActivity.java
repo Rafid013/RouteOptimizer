@@ -59,12 +59,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
-
-    //com.pranto
     private int color;
     ArrayList<RoadInfo> roadList;
-    //com.pranto
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,8 +71,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         // Initializing
         MarkerPoints = new ArrayList<>();
-
-        //com.pranto
         roadList = new ArrayList<>();
         LatLng pA= new LatLng(23.727461,90.389597);
         LatLng pB = new LatLng(23.721086,90.389157);
@@ -89,7 +83,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         roadList.add(new RoadInfo(pA,pD,700));
         roadList.add(new RoadInfo(pA,pE,400));
         roadList.add(new RoadInfo(pA,pF,500));
-        //com.pranto
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -126,10 +119,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //current location to be received originally
         //mMap.addMarker(new MarkerOptions().position(lt).title("HQ"));
         mMap.animateCamera(CameraUpdateFactory.newLatLng(lt));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(50));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         // Setting onclick event listener for the map
 
-        for(int i =0; i<roadList.size(); i++)
+        colorRoads(roadList);
+    }
+
+    //getCurrentLocation
+    //getUpperLeft
+    //getLowerRight
+    //RoadsBetweenThesePoints
+
+
+    //Color the Roads
+    public void colorRoads(ArrayList<RoadInfo> roadList) {
+        for(int i = 0; i < roadList.size(); i++)
         {
             LatLng origin = roadList.get(i).getStart() ;
             LatLng dest = roadList.get(i).getEnd();
@@ -160,64 +164,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         }
-
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-
-            @Override
-            public void onMapClick(LatLng point) {
-
-                //Already two locations
-               /* if (MarkerPoints.size() > 1) {
-                    MarkerPoints.clear();
-                    mMap.clear();
-                }
-
-                // Adding new item to the ArrayList
-                MarkerPoints.add(point);
-
-                // Creating MarkerOptions
-                MarkerOptions options = new MarkerOptions();
-
-                // Setting the position of the marker
-                options.position(point);
-
-                /**
-                 * For the start location, the color of marker is GREEN and
-                 * for the end location, the color of marker is RED.
-                 */
-                /*if (MarkerPoints.size() == 1) {
-                    options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                } else if (MarkerPoints.size() == 2) {
-                    options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-                }*/
-
-
-                // Add new marker to the Google Map Android API V2
-               /* mMap.addMarker(options);
-
-                // Checks, whether start and end locations are captured
-                if (MarkerPoints.size() >= 2) {
-                    LatLng origin = MarkerPoints.get(0);
-                    LatLng dest = MarkerPoints.get(1);
-
-                    // Getting URL to the Google Directions API
-                    String url = getUrl(origin, dest);
-                    Log.d("onMapClick", url.toString());
-                    FetchUrl FetchUrl = new FetchUrl();
-
-                    // Start downloading json data from Google Directions API
-                    FetchUrl.execute(url);
-                    //move map camera
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
-                    mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-                }*/
-
-            }
-        });
-
     }
 
-
+    
+    //searches user provided location
+    public void Search(View view)
+    {
+        EditText loc = (EditText)findViewById(R.id.Text);
+        String location = loc.getText().toString();
+        List<Address> addressList = null;
+        if(location != null || location !="")
+        {
+            Geocoder geocoder = new Geocoder(this);
+            try {
+                addressList = geocoder.getFromLocationName(location,1);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        if(addressList!=null) {
+            Address add = addressList.get(0);
+            LatLng latLng = new LatLng(add.getLatitude(), add.getLongitude());
+            mMap.clear();
+            mMap.addMarker(new MarkerOptions().position(latLng).title("You searched for " + location));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        }
+    }
 
 
     protected synchronized void buildGoogleApiClient() {
@@ -249,30 +222,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-
-    public void Search(View view)
-    {
-        EditText loc = (EditText)findViewById(R.id.Text);
-        String location = loc.getText().toString();
-        List<Address> addressList = null;
-        if(location != null || location !="")
-        {
-            Geocoder geocoder = new Geocoder(this);
-            try {
-                addressList = geocoder.getFromLocationName(location,1);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        if(addressList!=null) {
-            Address add = addressList.get(0);
-            LatLng latLng = new LatLng(add.getLatitude(), add.getLongitude());
-            mMap.clear();
-            mMap.addMarker(new MarkerOptions().position(latLng).title("Marker in Sydney"));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
-        }
-    }
 
 
     @Override
@@ -367,9 +316,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
                 return;
             }
-
-            // other 'case' lines to check for other permissions this app might request.
-            // You can add here other case statements according to your requirement.
         }
     }
 }

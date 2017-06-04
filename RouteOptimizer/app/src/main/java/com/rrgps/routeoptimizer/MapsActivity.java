@@ -137,6 +137,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 return false;
             }
         });
+        mMap.setOnCameraMoveListener(new GoogleMap.OnCameraMoveListener() {
+            @Override
+            public void onCameraMove() {
+                currentScreen = mMap.getProjection().getVisibleRegion().latLngBounds;
+                colorRoads(getRoadList());
+            }
+        });
     }
 
     //getCurrentLocation

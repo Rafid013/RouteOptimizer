@@ -28,6 +28,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -51,7 +52,7 @@ import static com.rrgps.routeoptimizer.R.id.map;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
-        LocationListener {
+        LocationListener, GoogleMap.OnMapLoadedCallback {
 
     private GoogleMap mMap;
     ArrayList<LatLng> MarkerPoints;
@@ -59,6 +60,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Location mLastLocation;
     Marker mCurrLocationMarker;
     LocationRequest mLocationRequest;
+    LatLngBounds currentScreen;
     private int color;
     ArrayList<RoadInfo> roadList;
     @Override
@@ -78,11 +80,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng pD = new LatLng(23.727736,90.395369);
         LatLng pE = new LatLng(23.732401,90.387076);
         LatLng pF = new LatLng(23.726872,90.386314);
+        LatLng bA = new LatLng(23.764822,90.388210);
+        LatLng bB = new LatLng(23.765600,90.383633);
+        LatLng bC = new LatLng(23.765181,90.383407);
+        LatLng bD = new LatLng(23.764546,90.388668);
         roadList.add(new RoadInfo(pA,pB,100));
         roadList.add(new RoadInfo(pA,pC,1200));
         roadList.add(new RoadInfo(pA,pD,700));
         roadList.add(new RoadInfo(pA,pE,400));
         roadList.add(new RoadInfo(pA,pF,500));
+        roadList.add(new RoadInfo(bA,bB,1500));
+        roadList.add(new RoadInfo(bC,bD,300));
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -118,11 +126,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng lt = new LatLng(23.727461, 90.389597);
         //current location to be received originally
         //mMap.addMarker(new MarkerOptions().position(lt).title("HQ"));
-        mMap.animateCamera(CameraUpdateFactory.newLatLng(lt));
+        //mMap.animateCamera(CameraUpdateFactory.newLatLng(lt));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         // Setting onclick event listener for the map
-
-        colorRoads(roadList);
+        //currentScreen = googleMap.getProjection().getVisibleRegion().latLngBounds;
+        //System.out.println("clee : "+currentScreen.northeast);
+        googleMap.setOnMapLoadedCallback(this);
+        mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener(){
+            @Override
+            public boolean onMyLocationButtonClick()
+            {
+                currentScreen = mMap.getProjection().getVisibleRegion().latLngBounds;
+                colorRoads(roadList);
+                return false;
+            }
+        });
+        //colorRoads(roadList);
     }
 
     //getCurrentLocation
@@ -137,7 +156,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         {
             LatLng origin = roadList.get(i).getStart() ;
             LatLng dest = roadList.get(i).getEnd();
-            if(roadList.get(i).getWeight() < 500)
+            /*if(roadList.get(i).getWeight() < 500)
             {
                 color = 1; //green
 
@@ -162,7 +181,36 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             fetchUrl.execute(url);
             //move map camera
             mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));*/
+            if(currentScreen.contains(origin)||currentScreen.contains(dest))
+            {
+                if(roadList.get(i).getWeight() < 500)
+                {
+                    color = 1; //green
+
+                }
+                else if(roadList.get(i).getWeight() < 1000)
+                {
+                    color = 2; //yellow
+
+                }
+                else
+                {
+                    color = 3; //red
+                }
+
+                // Getting URL to the Google Directions API
+                URLMethods urlMethods = new URLMethods();
+                String url = urlMethods.getUrl(origin, dest);
+                Log.d("onMapClick", url);
+                FetchURL fetchUrl = new FetchURL(color, mMap);
+
+                // Start downloading json data from Google Directions API
+                fetchUrl.execute(url);
+                //move map camera
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(origin));
+                mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            }
         }
     }
 
@@ -189,6 +237,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(latLng).title("You searched for " + location));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            currentScreen = mMap.getProjection().getVisibleRegion().latLngBounds;
+            colorRoads(roadList);
         }
     }
 
@@ -242,7 +292,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(11));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+        currentScreen = mMap.getProjection().getVisibleRegion().latLngBounds;
+        colorRoads(roadList);
 
         //stop location updates
         if (mGoogleApiClient != null) {
@@ -317,5 +369,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 return;
             }
         }
+    }
+
+    @Override
+    public void onMapLoaded() {
+        currentScreen = mMap.getProjection().getVisibleRegion().latLngBounds;
+        colorRoads(roadList);
     }
 }

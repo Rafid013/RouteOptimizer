@@ -17,4 +17,8 @@ public class UI extends AppCompatActivity {
     public void showCurr(View v){
         startActivity(new Intent(UI.this, MapsActivity.class));
     }
+
+    public void logOutAction(View v) {
+        startActivity(new Intent(UI.this, LoginActivity.class));
+    }
 }

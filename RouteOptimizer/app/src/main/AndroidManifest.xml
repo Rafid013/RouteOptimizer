@@ -68,6 +68,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
+        <activity android:name=".ConnectionFailed"></activity>
     </application>
 
 </manifest>

@@ -12,7 +12,7 @@
     <string name="text_email">Email</string>
     <string name="home">Home</string>
     <string name="title_activity_login2">Sign in</string>
-
+    <string name="try_again">Try Again</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -25,4 +25,8 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <string name="failed_connection">Connection Failed.</string>
+    <string name="check_connection">Check your internet connection</string>
+    <string name="and">and</string>
 </resources>

@@ -20,7 +20,7 @@ public class StartScreenActivity extends FragmentActivity {
 
             @Override
             public void onFinish(){
-                Intent intent = new Intent(StartScreenActivity.this, MapsActivity.class);
+                Intent intent = new Intent(StartScreenActivity.this, UI.class);
                 startActivity(intent);
             }
         }.start();

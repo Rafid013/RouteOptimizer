@@ -1,4 +1,25 @@
 <resources>
     <string name="app_name">Traffico</string>
     <string name="title_activity_maps">Map</string>
+    <string name="profile_button">Profile</string>
+    <string name="get_direction_button">Get Direction</string>
+    <string name="curr_situation_button">Current Situation</string>
+    <string name="provide_info_button">Provide Info</string>
+    <string name="log_out_button">Log Out</string>
+    <string name="search_button">Search</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_login">Sign In</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
 </resources>

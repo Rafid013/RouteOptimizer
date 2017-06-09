@@ -96,7 +96,7 @@
                 android:id="@+id/signInButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.77"
+                android:layout_weight="0.60"
                 android:background="@color/colorPrimary"
                 android:onClick="signInAction"
                 android:text="@string/action_sign_in"
@@ -106,7 +106,7 @@
                 android:id="@+id/registerButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.54"
+                android:layout_weight="0.46"
                 android:background="@android:color/darker_gray"
                 android:onClick="registerAction"
                 android:text="@string/action_register" />

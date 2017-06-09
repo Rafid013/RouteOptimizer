@@ -70,7 +70,8 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".ConnectionFailed" />
         <activity android:name=".UpdateAdmin" />
-        <activity android:name=".UpdateAdmin2"></activity>
+        <activity android:name=".UpdateAdmin2" />
+        <activity android:name=".Register"></activity>
     </application>
 
 </manifest>

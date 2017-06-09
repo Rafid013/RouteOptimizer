@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "974104355378",
+    "firebase_url": "https://routeoptimizer-66237.firebaseio.com",
+    "project_id": "routeoptimizer-66237",
+    "storage_bucket": "routeoptimizer-66237.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974104355378:android:d91b243f1cc04a5b",
+        "android_client_info": {
+          "package_name": "com.rrgps.routeoptimizer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974104355378-qn19mtqfrf6ae5ru706f94123ae9gr97.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rrgps.routeoptimizer",
+            "certificate_hash": "0a05fba983dabb2c30c0cb3b6c52632494b7b00f"
+          }
+        },
+        {
+          "client_id": "974104355378-qhvnvebgvjq4rpr2096othrrcrh6984u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqVBZCCBqW1F2zEnVaTAiHHoFoZ5Bx0Ms"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974104355378-qhvnvebgvjq4rpr2096othrrcrh6984u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

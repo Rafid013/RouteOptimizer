@@ -34,6 +34,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONObject;
 
@@ -56,6 +61,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         GoogleApiClient.OnConnectionFailedListener,
         LocationListener, GoogleMap.OnMapLoadedCallback {
 
+    public DatabaseReference roads;
     private GoogleMap mMap;
     GoogleApiClient mGoogleApiClient;
     Location mLastLocation;
@@ -68,7 +74,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-
+        roads = StartScreenActivity.roads;
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();
         }
@@ -85,12 +91,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng bC = new LatLng(23.765181,90.383407);
         LatLng bD = new LatLng(23.764546,90.388668);
         roadList.add(new RoadInfo(pA,pB,100));
-        roadList.add(new RoadInfo(pA,pC,1200));
+        /*roadList.add(new RoadInfo(pA,pC,1200));
         roadList.add(new RoadInfo(pA,pD,700));
         roadList.add(new RoadInfo(pA,pE,400));
         roadList.add(new RoadInfo(pA,pF,500));
         roadList.add(new RoadInfo(bA,bB,1500));
-        roadList.add(new RoadInfo(bC,bD,300));
+        roadList.add(new RoadInfo(bC,bD,300));*/
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -106,6 +112,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        roads.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                /*roadList.clear();
+                for (DataSnapshot roads : dataSnapshot.getChildren()) {
+                    roadList.add(roads.getValue(RoadInfo.class));
+                }*/
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -164,29 +191,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         {
             LatLng origin = roadList.get(i).getStart() ;
             LatLng dest = roadList.get(i).getEnd();
-            if(roadList.get(i).getWeight() < 500)
-            {
-                color = 1; //green
+            if (roadList.get(i).getWeight() < 500) {
+                    color = 1; //green
 
-            }
-            else if(roadList.get(i).getWeight() < 1000)
-            {
-                color = 2; //yellow
+                } else if (roadList.get(i).getWeight() < 1000) {
+                    color = 2; //yellow
 
-            }
-            else
-            {
-                color = 3; //red
-            }
+                } else {
+                    color = 3; //red
+                }
 
-            // Getting URL to the Google Directions API
-            URLMethods urlMethods = new URLMethods();
-            String url = urlMethods.getUrl(origin, dest);
-            Log.d("onMapClick", url);
-            FetchURL fetchUrl = new FetchURL(color, mMap);
+                // Getting URL to the Google Directions API
+                URLMethods urlMethods = new URLMethods();
+                String url = urlMethods.getUrl(origin, dest);
+                Log.d("onMapClick", url);
+                FetchURL fetchUrl = new FetchURL(color, mMap);
 
-            // Start downloading json data from Google Directions API
-            fetchUrl.execute(url);
+                // Start downloading json data from Google Directions API
+                fetchUrl.execute(url);
         }
     }
 
@@ -351,6 +373,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapLoaded() {
         currentScreen = mMap.getProjection().getVisibleRegion().latLngBounds;
-        colorRoads(getRoadList());
+        colorRoads(roadList);
     }
 }

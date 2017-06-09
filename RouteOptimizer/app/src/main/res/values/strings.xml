@@ -33,4 +33,9 @@
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
     <string name="submit">Submit</string>
+    <string name="auth_failed">Registration Failed.</string>
+    <string name="sign_in_failed">Sign In Failed</string>
+    <string name="log_out_failed">Log Out Failed</string>
+    <string name="enter_values">Enter all values</string>
+    <string name="check_button">Select one of the buttons</string>
 </resources>

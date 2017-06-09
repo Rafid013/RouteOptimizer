@@ -67,8 +67,9 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".ConnectionFailed" />
+        <activity android:name=".LoginActivity">
+        </activity>
+        <activity android:name=".Register"></activity>
         <activity android:name=".UpdateAdmin" />
         <activity android:name=".UpdateAdmin2"></activity>
     </application>

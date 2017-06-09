@@ -5,8 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class UpdateAdmin extends AppCompatActivity {
+
+    public static String startLatitudeString;
+    public static String startLongitudeString;
+    public static String endLatitudeString;
+    public static String endLongitudeString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,17 +25,20 @@ public class UpdateAdmin extends AppCompatActivity {
         EditText startLongitude = (EditText)findViewById(R.id.StartLongitudeInput);
         EditText endLatitude = (EditText)findViewById(R.id.EndLatitudeInput);
         EditText endLongitude = (EditText)findViewById(R.id.EndLongitudeInput);
-        String startLatitudeString = startLatitude.getText().toString();
-        String startLongitudeString = startLongitude.getText().toString();
-        String endLatitudeString = endLatitude.getText().toString();
-        String endLongitudeString = endLongitude.getText().toString();
-        Bundle bundle = new Bundle();
-        bundle.putString("sla", startLatitudeString);
-        bundle.putString("slo", startLongitudeString);
-        bundle.putString("ela", endLatitudeString);
-        bundle.putString("elo", endLongitudeString);
-        Intent intent = new Intent(UpdateAdmin.this, UpdateAdmin2.class);
-        startActivity(intent);
+        startLatitudeString = startLatitude.getText().toString();
+        startLongitudeString = startLongitude.getText().toString();
+        endLatitudeString = endLatitude.getText().toString();
+        endLongitudeString = endLongitude.getText().toString();
+        if(startLatitudeString.equals("") || startLongitudeString.equals("") ||
+                endLatitudeString.equals("") || endLongitudeString.equals("")) {
+            Toast.makeText(UpdateAdmin.this, R.string.enter_values,
+                    Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Intent intent = new Intent(UpdateAdmin.this, UpdateAdmin2.class);
+            startActivity(intent);
+        }
+
     }
 
 }

@@ -59,13 +59,14 @@
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="23dp"
-        android:text="@string/provide_info_button"
-        tools:layout_constraintBottom_creator="1"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
-        tools:layout_constraintLeft_creator="1"
         android:layout_marginBottom="20dp"
-        app:layout_constraintLeft_toLeftOf="@+id/curr_sit" />
+        android:layout_marginStart="23dp"
+        android:onClick="provideInfoAction"
+        android:text="@string/provide_info_button"
+        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintLeft_toLeftOf="@+id/curr_sit"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1" />
 
     <Button
         android:id="@+id/button2"

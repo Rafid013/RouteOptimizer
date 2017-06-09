@@ -21,4 +21,8 @@ public class UI extends AppCompatActivity {
     public void logOutAction(View v) {
         startActivity(new Intent(UI.this, LoginActivity.class));
     }
+
+    public void provideInfoAction(View view) {
+        startActivity(new Intent(UI.this, UpdateAdmin.class));
+    }
 }

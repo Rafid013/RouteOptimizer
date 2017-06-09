@@ -68,7 +68,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ConnectionFailed"></activity>
+        <activity android:name=".ConnectionFailed" />
+        <activity android:name=".UpdateAdmin" />
+        <activity android:name=".UpdateAdmin2"></activity>
     </application>
 
 </manifest>

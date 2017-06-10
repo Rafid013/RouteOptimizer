@@ -12,7 +12,7 @@
 
         <EditText
             android:id="@+id/Text"
-            android:layout_width="241dp"
+            android:layout_width="272dp"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName" />

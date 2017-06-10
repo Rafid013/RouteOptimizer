@@ -54,6 +54,7 @@ import java.util.List;
 
 import static com.google.android.gms.common.ConnectionResult.NETWORK_ERROR;
 import static com.rrgps.routeoptimizer.R.id.map;
+import static com.rrgps.routeoptimizer.R.id.navigation_header_container;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,
@@ -90,13 +91,51 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng bB = new LatLng(23.765600,90.383633);
         LatLng bC = new LatLng(23.765181,90.383407);
         LatLng bD = new LatLng(23.764546,90.388668);
-        roadList.add(new RoadInfo(pA,pB,100));
-        /*roadList.add(new RoadInfo(pA,pC,1200));
+        /*LatLng bE = new LatLng(23.764299,90.370797);
+        LatLng bF = new LatLng(23.765085,90.383156);
+        LatLng bG = new LatLng(23.758957,90.383843);
+        LatLng bH = new LatLng(23.759124,90.389684);
+        */LatLng sA = new LatLng(23.738961,90.383233);
+        LatLng sB = new LatLng(23.737870,90.381045);
+        LatLng sC = new LatLng(23.741623,90.382686);
+        LatLng sD = new LatLng(23.741613,90.382847);
+        LatLng sE = new LatLng(23.739001,90.383534);
+        LatLng sF = new LatLng(23.739178,90.388737);
+        LatLng sG = new LatLng(23.738991,90.388415);
+        LatLng sH = new LatLng(23.738765,90.383630);
+        LatLng sI = new LatLng(23.734600,90.384551);
+        LatLng sJ = new LatLng(23.734570,90.384391);
+        /*LatLng cA = new LatLng(23.723951,90.400357);
+        LatLng cB = new LatLng(23.724619,90.395508);
+        LatLng cC = new LatLng(23.727644,90.400389);
+        LatLng cD = new LatLng(23.723293,90.405464);
+        LatLng cE = new LatLng(23.720258,90.398383);
+        */roadList.add(new RoadInfo(pA,pB,100));
+        roadList.add(new RoadInfo(pA,pC,1200));
         roadList.add(new RoadInfo(pA,pD,700));
         roadList.add(new RoadInfo(pA,pE,400));
         roadList.add(new RoadInfo(pA,pF,500));
         roadList.add(new RoadInfo(bA,bB,1500));
-        roadList.add(new RoadInfo(bC,bD,300));*/
+        roadList.add(new RoadInfo(bC,bD,300));
+
+        /*roadList.add(new RoadInfo(bE,bF,700));
+        roadList.add(new RoadInfo(bF,bG,1200));
+        roadList.add(new RoadInfo(bG,bH,400));
+        */roadList.add(new RoadInfo(sA,sB, 550));
+        roadList.add(new RoadInfo(sA,sC, 1280));
+        roadList.add(new RoadInfo(sD,sE, 900));
+        roadList.add(new RoadInfo(sE,sF, 120));
+        roadList.add(new RoadInfo(sG,sH, 480));
+        roadList.add(new RoadInfo(sH,sI, 300));
+        roadList.add(new RoadInfo(sJ,sA, 730));
+        /*roadList.add(new RoadInfo(cA,cB, 120));
+        roadList.add(new RoadInfo(cA,cC, 230));
+        roadList.add(new RoadInfo(cA,cC, 560));
+        roadList.add(new RoadInfo(cA,cD, 1200));
+        roadList.add(new RoadInfo(cA,cE, 700));
+        roadList.add(new RoadInfo(cC,cA, 1500));
+        roadList.add(new RoadInfo(cD,cA, 300));
+*/
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -119,10 +158,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         roads.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                /*roadList.clear();
+                //roadList.clear();
                 for (DataSnapshot roads : dataSnapshot.getChildren()) {
-                    roadList.add(roads.getValue(RoadInfo.class));
-                }*/
+                    //roadList.add(roads.getValue(RoadInfo.class));
+                }
             }
 
             @Override
@@ -150,6 +189,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             buildGoogleApiClient();
             mMap.setMyLocationEnabled(true);
         }
+        colorRoads(getRoadList());
         googleMap.setOnMapLoadedCallback(this);
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         mMap.setOnMyLocationButtonClickListener(new GoogleMap.OnMyLocationButtonClickListener(){

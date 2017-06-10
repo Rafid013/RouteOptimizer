@@ -55,15 +55,11 @@ public class LoginActivity extends AppCompatActivity {
 
     public void signInAction(View view) {
         EditText email = (EditText) findViewById(R.id.emailText);
-        TextView emailError = (TextView) findViewById(R.id.EmailError);
         EditText password = (EditText) findViewById(R.id.passwordText);
-        TextView passwordError = (TextView)findViewById(R.id.PasswordError);
         String emailInput = email.getText().toString();
         String passwordInput = password.getText().toString();
         if(emailInput.equals("")){
             //show error
-            emailError.setVisibility(View.VISIBLE);
-            passwordError.setVisibility(View.INVISIBLE);
         }
         else {
             /*if (checkEmailExist(emailInput)) {

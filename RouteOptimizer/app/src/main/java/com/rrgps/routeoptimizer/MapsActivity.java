@@ -81,7 +81,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         // Initializing
         roadList = new ArrayList<>();
-        LatLng pA= new LatLng(23.727461,90.389597);
+        /*LatLng pA= new LatLng(23.727461,90.389597);
         LatLng pB = new LatLng(23.721086,90.389157);
         LatLng pC = new LatLng(23.724613,90.395476);
         LatLng pD = new LatLng(23.727736,90.395369);
@@ -95,7 +95,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng bF = new LatLng(23.765085,90.383156);
         LatLng bG = new LatLng(23.758957,90.383843);
         LatLng bH = new LatLng(23.759124,90.389684);
-        */LatLng sA = new LatLng(23.738961,90.383233);
+        *//*LatLng sA = new LatLng(23.738961,90.383233);
         LatLng sB = new LatLng(23.737870,90.381045);
         LatLng sC = new LatLng(23.741623,90.382686);
         LatLng sD = new LatLng(23.741613,90.382847);
@@ -110,32 +110,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng cC = new LatLng(23.727644,90.400389);
         LatLng cD = new LatLng(23.723293,90.405464);
         LatLng cE = new LatLng(23.720258,90.398383);
-        */roadList.add(new RoadInfo(pA,pB,100));
+        */
+        /*roadList.add(new RoadInfo(pA,pB,100));
         roadList.add(new RoadInfo(pA,pC,1200));
         roadList.add(new RoadInfo(pA,pD,700));
         roadList.add(new RoadInfo(pA,pE,400));
         roadList.add(new RoadInfo(pA,pF,500));
         roadList.add(new RoadInfo(bA,bB,1500));
-        roadList.add(new RoadInfo(bC,bD,300));
+        roadList.add(new RoadInfo(bC,bD,300));*/
 
         /*roadList.add(new RoadInfo(bE,bF,700));
         roadList.add(new RoadInfo(bF,bG,1200));
         roadList.add(new RoadInfo(bG,bH,400));
-        */roadList.add(new RoadInfo(sA,sB, 550));
+        */
+        /*roadList.add(new RoadInfo(sA,sB, 550));
         roadList.add(new RoadInfo(sA,sC, 1280));
         roadList.add(new RoadInfo(sD,sE, 900));
         roadList.add(new RoadInfo(sE,sF, 120));
         roadList.add(new RoadInfo(sG,sH, 480));
         roadList.add(new RoadInfo(sH,sI, 300));
-        roadList.add(new RoadInfo(sJ,sA, 730));
+        roadList.add(new RoadInfo(sJ,sA, 730));*/
         /*roadList.add(new RoadInfo(cA,cB, 120));
         roadList.add(new RoadInfo(cA,cC, 230));
         roadList.add(new RoadInfo(cA,cC, 560));
         roadList.add(new RoadInfo(cA,cD, 1200));
         roadList.add(new RoadInfo(cA,cE, 700));
         roadList.add(new RoadInfo(cC,cA, 1500));
-        roadList.add(new RoadInfo(cD,cA, 300));
-*/
+        roadList.add(new RoadInfo(cD,cA, 300));*/
+
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -158,9 +160,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         roads.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //roadList.clear();
+                roadList.clear();
                 for (DataSnapshot roads : dataSnapshot.getChildren()) {
-                    //roadList.add(roads.getValue(RoadInfo.class));
+                    roadList.add(roads.getValue(RoadInfo.class));
                 }
             }
 

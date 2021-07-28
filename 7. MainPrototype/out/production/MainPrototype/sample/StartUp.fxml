@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(#59cdff, #ffffff, #59cdff, #ffffff, #59cdff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StartUpController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="53.0" layoutY="117.0" prefHeight="85.0" prefWidth="375.0" text="TRAFFICO" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Moon Bold" size="72.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.5095238095238095" endY="0.8238095238095239" startX="0.48095238095238096" startY="0.09523809523809523">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill></Label>
+      <Button layoutX="179.0" layoutY="467.0" mnemonicParsing="false" onAction="#signInPressed" style="-fx-background-color: transparent;" text="Sign In" textFill="#220e0e" underline="true">
+         <font>
+            <Font name="Moon Bold" size="24.0" />
+         </font>
+      </Button>
+      <Button layoutX="319.0" layoutY="553.0" mnemonicParsing="false" onAction="#registerPressed" style="-fx-background-color: transparent;" text="Sign up" textFill="#1b0101" underline="true">
+         <font>
+            <Font name="Moon Bold" size="24.0" />
+         </font>
+      </Button>
+      <Text layoutX="55.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

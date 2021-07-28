@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(#59cdff, #ffffff, #59cdff, #ffffff, #59cdff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.UpdateController">
+   <children>
+      <Button fx:id="homeButton" layoutX="62.0" layoutY="596.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Home" underline="true">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <Button fx:id="undoButton" layoutX="342.0" layoutY="596.0" mnemonicParsing="false" onMouseClicked="#undoUpdate" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: transparent;" text="Undo" underline="true">
+         <font>
+            <Font size="16.0" />
+         </font></Button>
+      <AnchorPane fx:id="firstAnchor" onMouseDragged="#updateDirectionGiven" prefHeight="560.0" prefWidth="480.0">
+         <children>
+            <AnchorPane fx:id="anchor2" layoutX="140.0" layoutY="360.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: linear-gradient(#ffffff, #59cdff, #ffffff);">
+               <children>
+                  <RadioButton fx:id="low" layoutX="57.0" layoutY="50.0" mnemonicParsing="false" text="Low" textFill="#0e5e18">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="medium" layoutX="57.0" layoutY="83.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="110.0" text="Medium" textFill="#adb512">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="high" layoutX="57.0" layoutY="118.0" mnemonicParsing="false" text="High" textFill="#cd1515">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <Button layoutX="122.0" layoutY="156.0" mnemonicParsing="false" onAction="#doUpdate" style="-fx-background-color: transparent;" text="Provide" underline="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Label fx:id="label2" layoutX="44.0" layoutY="587.0" text="   Swipe to provide traffic direction" textFill="#a12525">
+         <font>
+            <Font name="Moon Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label1" layoutX="119.0" layoutY="584.0" text="Please provide severity" textFill="#a12525" visible="false">
+         <font>
+            <Font name="Moon Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="label3" layoutX="62.0" layoutY="585.0" text="Thank you for providing information" textFill="#a12525" visible="false">
+         <font>
+            <Font name="Moon Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

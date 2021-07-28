@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(#59cdff, #ffffff, #59cdff, #ffffff, #59cdff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ProfileController">
+   <children>
+      <Label layoutX="54.0" layoutY="300.0" prefHeight="35.0" prefWidth="79.0" text="Name    :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="363.0" prefHeight="35.0" prefWidth="79.0" text="Email    :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="56.0" layoutY="418.0" prefHeight="35.0" prefWidth="79.0" text="Mobile  :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="476.0" prefHeight="35.0" prefWidth="79.0" text="Coin    :">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="nameField" editable="false" layoutX="53.0" layoutY="335.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="emailField" editable="false" layoutX="53.0" layoutY="393.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="mobileField" editable="false" layoutX="55.0" layoutY="451.0" prefHeight="25.0" prefWidth="175.0" style="-fx-background-radius: 10;" />
+      <TextField fx:id="coinField" editable="false" layoutX="54.0" layoutY="511.0" prefHeight="25.0" prefWidth="68.0" style="-fx-background-radius: 10;" />
+      <Button layoutX="53.0" layoutY="556.0" mnemonicParsing="false" onAction="#changePasswordPressed" prefHeight="25.0" prefWidth="144.0" style="-fx-background-radius: 10; -fx-background-color: linear-gradient(#e20606, #e25d0b);" text="Change Password" textFill="WHITE" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="63.0" layoutY="58.0" prefHeight="85.0" prefWidth="375.0" text="TRAFFICO" textAlignment="JUSTIFY">
+         <font>
+            <Font name="Moon Bold" size="72.0" />
+         </font>
+         <textFill>
+            <LinearGradient endX="0.5095238095238095" endY="0.8238095238095239" startX="0.48095238095238096" startY="0.09523809523809523">
+               <stops>
+                  <Stop color="BLACK" />
+                  <Stop color="RED" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <Button layoutX="230.0" layoutY="556.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="25.0" prefWidth="58.0" style="-fx-background-radius: 10;" text="Back" />
+   </children>
+</AnchorPane>

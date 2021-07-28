@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(#59cdff, #ffffff, #59cdff, #ffffff, #59cdff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SignUpController">
+    <children>
+        <Text fontSmoothingType="LCD" layoutX="87.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: *" wrappingWidth="110.892578125">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <Text layoutX="85.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password: *" wrappingWidth="100.2763671875">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Text>
+        <TextField fx:id="name" layoutX="85.0" layoutY="149.0" prefHeight="35.0" prefWidth="275.0" promptText="John Doe" style="-fx-background-radius: 10;">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <Button layoutX="223.0" layoutY="536.0" mnemonicParsing="false" onAction="#cancel" prefHeight="42.0" prefWidth="88.0" style="-fx-background-radius: 10;" text="Cancel">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <Button layoutX="85.0" layoutY="536.0" mnemonicParsing="false" onAction="#signUpPressed" prefHeight="42.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#e20606, #e25d0b); -fx-background-radius: 10;" text="Sign Up" textFill="WHITE">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Button>
+        <PasswordField fx:id="password" layoutX="87.0" layoutY="393.0" prefHeight="35.0" prefWidth="215.0" promptText="Enter your password" style="-fx-background-radius: 10;">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </PasswordField>
+      <Text fontSmoothingType="LCD" layoutX="87.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:*" wrappingWidth="110.892578125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text fontSmoothingType="LCD" layoutX="82.0" layoutY="301.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mobile Number:" wrappingWidth="163.892578125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="85.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm Password: *" wrappingWidth="170.2763671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="email" layoutX="85.0" layoutY="230.0" prefHeight="35.0" prefWidth="275.0" promptText="JohnDoe@gmail.com" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="mobile" layoutX="83.0" layoutY="308.0" prefHeight="35.0" prefWidth="175.0" promptText="01XXX-XXXXXX" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="rePassword" layoutX="86.0" layoutY="472.0" prefHeight="35.0" prefWidth="215.0" promptText="Re-Enter your password" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </PasswordField>
+      <Text layoutX="183.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum 5 characters" wrappingWidth="149.13671875" />
+      <Label layoutX="87.0" layoutY="86.0" text="*Required" textFill="#c61010">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="errorMsg" layoutX="87.0" layoutY="47.0" prefHeight="27.0" prefWidth="269.0" text="You didn't fill up all the required fields" textFill="#c31a1a" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameError" layoutX="370.0" layoutY="159.0" text="This is required" textFill="#bc2525" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="emailError" layoutX="370.0" layoutY="240.0" text="This is required" textFill="#b91414" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="passwordError" layoutX="309.0" layoutY="403.0" text="This is required" textFill="#c31b1b" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="rePasswordError" layoutX="311.0" layoutY="483.0" text="Password Mismatch" textFill="#c60d0d" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+    </children>
+</AnchorPane>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(#59cdff,#ffffff,#59cdff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SetStartController">
+   <children>
+      <Button layoutX="21.0" layoutY="568.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Back" underline="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="131.0" layoutY="561.0" prefHeight="46.0" prefWidth="231.0" text="Set Starting Point" textFill="#a12525">
+         <font>
+            <Font name="Moon Bold" size="18.0" />
+         </font>
+      </Label>
+      <AnchorPane fx:id="anchor2" prefHeight="560.0" prefWidth="480.0" scaleShape="false" />
+      <Button layoutX="384.0" layoutY="568.0" mnemonicParsing="false" onAction="#skipPressed" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Skip" underline="true" wrapText="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
+      <Label layoutX="46.0" layoutY="607.0" text="To continue with current location, press the           button." textFill="#e81414">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="340.0" layoutY="607.0" text="Skip" textFill="#2f542a">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

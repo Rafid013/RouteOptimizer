@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(#59cdff,#ffffff,#59cdff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SetEndController">
+   <children>
+      <AnchorPane fx:id="anchor2" prefHeight="560.0" prefWidth="480.0" />
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="560.0" prefHeight="46.0" prefWidth="231.0" text="Set Destination Point" textFill="#9a1515">
+         <font>
+            <Font name="Moon Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="378.0" layoutY="568.0" mnemonicParsing="false" onAction="#backPressed" prefHeight="31.0" prefWidth="82.0" style="-fx-background-color: transparent;" text="Back" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

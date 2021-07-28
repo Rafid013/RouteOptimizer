@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\title{CSE 308 Project Documentation\\Route Optimization}
+\author{Student ID\\1405009\\1405013\\1405014\\1405015\\1405016}
+\date{\today}
+\begin{document}
+\maketitle
+\section{Why the Number of Road Situations Shown is Small?}
+We used google API classes and google play services in our project. We also used firebase database system. Before connecting with the database, there were several requests sent to google services from our app. But as our app developed further the number of requests increased drastically. But we did not know that a certain network can sent limited number of request (free version). We did not use the paid version of the service. So we exhausted through our requests quickly. It took us a long time to figure out this problem. There was not much help on the Internet. When we connected our device to another network it worked for a while but again exhausted through the requests for that network quickly. To solve this problem we decreased the number of road informations stored in database so that the number of request sent to draw lines on the map are less.
+\section{Features}
+\subsection{Main Features}
+\begin{itemize}
+\item Current situation of traffic jam of Dhaka city(selected areas).
+\item Search box to navigate.
+\item Different colors to show severity. (Red = High, Yellow = Medium, Green = Low)
+\item Current location shown initially.
+\end{itemize}
+\subsection{Extra Features}
+\begin{itemize}
+\item Firebase (Database)
+\item Splash screen on app start-up.
+\item SignIn or Register page implemented with database.
+\item Home page.
+\item Traffic Update (Admin Version).
+\item Proper error messages in most cases.  
+\end{itemize}
+\section{Backend Language}
+\begin{itemize}
+\item Java (IDE: Android Studio)
+\item SDK version : Android 4.4(KitKat) and above.
+\end{itemize}
+\section{Framework Used}
+\textbf{MVC:} It's not clear in an Android project. But in this case the layout xml files can be thought of as \textbf{View} classes, Activity classes as \textbf{Controller Classes} and AndroidManifest.xml file as the \textbf{Model Class}.
+\section{Database}
+\textbf{Firebase:} A cloud, runtime and dynamic database provided by google. Used for storing user and traffic information.
+\section{Front End}
+Implemented by Android Studio. Map activity, LogIn activity and other activities for Home page, Update and Register.
+\section{Other Technologies}
+\begin{itemize}
+\item Google API classes
+\item Firebase provided classes.
+\end{itemize}
+\end{document}

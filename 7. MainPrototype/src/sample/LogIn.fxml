@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="480.0" style="-fx-background-color: linear-gradient(#59cdff, #ffffff, #59cdff, #ffffff, #59cdff);" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LogInController">
+   <children>
+      <Text fontSmoothingType="LCD" layoutX="133.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" wrappingWidth="110.892578125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <Text layoutX="133.0" layoutY="303.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="88.2763671875">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <TextField fx:id="name" layoutX="133.0" layoutY="213.0" prefHeight="50.0" prefWidth="215.0" promptText="John Doe" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button layoutX="133.0" layoutY="379.0" mnemonicParsing="false" onAction="#logInPressed" prefHeight="42.0" prefWidth="88.0" style="-fx-background-color: linear-gradient(#e20606, #e25d0b); -fx-background-radius: 10;" text="Sign In" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button layoutX="260.0" layoutY="379.0" mnemonicParsing="false" onAction="#cancel" prefHeight="42.0" prefWidth="88.0" style="-fx-background-radius: 10;" text="Cancel">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="pass" layoutX="133.0" layoutY="307.0" prefHeight="50.0" prefWidth="215.0" promptText="Enter your password" style="-fx-background-radius: 10;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </PasswordField>
+      <Label fx:id="errorMsg" layoutX="133.0" layoutY="116.0" text="Username or Password Incorrect" textFill="#a40b0b" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
